@@ -1,0 +1,40 @@
+<div class="outer-wrapper">
+  <span>
+    <p class="label">Currency Converter</p>
+  </span>
+  <span>
+    <p class="label">Type in amount and select currency:</p>
+  </span>
+  <div class="row">
+    <div class="col-6">
+      <input class="text-box" id="baseAmount" placeholder="0.00" type="number" [(ngModel)]="baseAmount" (ngModelChange)='getCurrencyRate(false)'>
+    </div>
+    <div class="col-6">
+      <select class="text-box" id="baseCurrency" [(ngModel)]="baseCurrency" (ngModelChange)="convertCurrencyVal(false, false)">
+        <option *ngFor="let rate of currencyArray" [value]="rate">{{ rate }}</option>
+      </select>
+    </div>
+  </div>
+  <span>
+    <p class="label">Converted Amount:</p>
+  </span>
+  <div class="row">
+    <div class="col-6">
+      <input class="text-box" id="convertAmount" placeholder="0.00" type="number" [(ngModel)]="convertAmount" (ngModelChange)="getCurrencyRate(true)" disabled>
+    </div>
+    <div class="col-6">
+      <select class="text-box" id="convertCurrency" [(ngModel)]="convertCurrency" (ngModelChange)="getCurrencyRate(true)">
+        <option *ngFor="let rate of rates" [value]="rate.id">{{ rate.id }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <span>
+      <p class="link label" (click)="showDisclaimer()">Disclaimer</p>
+    </span>
+  </div>
+  <div class="row" *ngIf="disclaimerFlag">
+    <p class="label">***The details expressed within this website are for information purposes only and are not intended as a solicitation
+      for funds or a recommendation to trade.</p>
+  </div>
+</div>
