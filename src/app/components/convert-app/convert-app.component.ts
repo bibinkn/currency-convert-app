@@ -11,12 +11,11 @@ export class ConvertAppComponent implements OnInit {
 
     baseAmount: number;
     convertAmount: number;
-    baseCurrency: string = 'USD';
+    baseCurrency: string = null;
     convertCurrency: string = null;
-    rates: Array<any> = [];
+    rates: Array<any> = [];  
     fromRates: Object = {};
     disclaimerFlag: boolean = false;
-    currencyArray: string[] = ['USD', 'CAD', 'EUR'];
 
     constructor(private convertService: ConvertServiceService) { }
 
@@ -30,10 +29,22 @@ export class ConvertAppComponent implements OnInit {
                 if (initial) {
                     const items: Array<any> = this.parseData(response.rates);
                     items.push({ id: 'EUR', value: 1 });
-                    this.rates = items;
-                    console.log(this.rates)
-                    this.baseCurrency = this.rates[30].id;
-                    this.convertCurrency = this.rates[3].id;
+                    let newCurrList = [
+                        {
+                            id:"CAD",
+                            value:items[3].value
+                        },
+                        {
+                            id:"USD",
+                            value:items[30].value
+                        },{
+                            id:"EUR",
+                            value:items[32].value
+                        }
+                    ]
+                    this.rates = newCurrList;
+                    this.baseCurrency = this.rates[1].id;
+                    this.convertCurrency = this.rates[2].id;
                     this.convertCurrencyVal(false, false);
                 }
                 this.fromRates = response.rates;
