@@ -13,7 +13,7 @@ export class ConvertAppComponent implements OnInit {
     convertAmount: number;
     baseCurrency: string = null;
     convertCurrency: string = null;
-    rates: Array<any> = [];  
+    rates: Array<any> = [];
     fromRates: Object = {};
     disclaimerFlag: boolean = false;
 
@@ -31,15 +31,15 @@ export class ConvertAppComponent implements OnInit {
                     items.push({ id: 'EUR', value: 1 });
                     let newCurrList = [
                         {
-                            id:"CAD",
-                            value:items[3].value
+                            id: "CAD",
+                            value: items[3].value
                         },
                         {
-                            id:"USD",
-                            value:items[30].value
-                        },{
-                            id:"EUR",
-                            value:items[32].value
+                            id: "USD",
+                            value: items[30].value
+                        }, {
+                            id: "EUR",
+                            value: items[32].value
                         }
                     ]
                     this.rates = newCurrList;

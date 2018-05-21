@@ -7,11 +7,11 @@
   </span>
   <div class="row">
     <div class="col-6">
-      <input class="text-box" id="baseAmount" placeholder="0.00" type="number" [(ngModel)]="baseAmount" (ngModelChange)='getCurrencyRate(false)'>
+      <input class="text-box" id="baseAmount" appDecimal="true" placeholder="0.00"  type="number" [(ngModel)]="baseAmount" (ngModelChange)='getCurrencyRate(false)'>
     </div>
     <div class="col-6">
       <select class="text-box" id="baseCurrency" [(ngModel)]="baseCurrency" (ngModelChange)="convertCurrencyVal(false, false)">
-        <option *ngFor="let rate of currencyArray" [value]="rate">{{ rate }}</option>
+        <option *ngFor="let rate of rates" [value]="rate.id">{{ rate.id }}</option>
       </select>
     </div>
   </div>
@@ -20,7 +20,7 @@
   </span>
   <div class="row">
     <div class="col-6">
-      <input class="text-box" id="convertAmount" placeholder="0.00" type="number" [(ngModel)]="convertAmount" (ngModelChange)="getCurrencyRate(true)" disabled>
+      <input class="text-box" id="convertAmount" appDecimal="true" placeholder="0.00" type="number" [(ngModel)]="convertAmount" (ngModelChange)="getCurrencyRate(true)">
     </div>
     <div class="col-6">
       <select class="text-box" id="convertCurrency" [(ngModel)]="convertCurrency" (ngModelChange)="getCurrencyRate(true)">
@@ -29,7 +29,8 @@
     </div>
   </div>
   <div class="row">
-    <span>
+    <span class="col-11"></span>
+    <span class="col-1">
       <p class="link label" (click)="showDisclaimer()">Disclaimer</p>
     </span>
   </div>
