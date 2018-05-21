@@ -1,6 +1,6 @@
 # CurrencyApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0, [NodeJs](https://nodejs.org/en/) version 8.11.1 and [NPM](https://www.npmjs.com/) version 5.6.0
 
 ## Development server
 
