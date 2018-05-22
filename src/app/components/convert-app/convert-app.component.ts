@@ -9,13 +9,14 @@ import { ConvertServiceService } from '../../services/convert-service.service';
 })
 export class ConvertAppComponent implements OnInit {
 
-    baseAmount: number;
-    convertAmount: number;
+    baseAmount: any;
+    convertAmount: any;
     baseCurrency: string = null;
     convertCurrency: string = null;
     rates: Array<any> = [];
     fromRates: Object = {};
     disclaimerFlag: boolean = false;
+    error: any = null;
 
     constructor(private convertService: ConvertServiceService) { }
 
@@ -54,10 +55,14 @@ export class ConvertAppComponent implements OnInit {
     }
 
     public getCurrencyRate(reverse) {
-        if (reverse) {
-            this.baseAmount = this.convertAmount / this.fromRates[this.convertCurrency];
+        if (this.baseCurrency === this.convertCurrency) {
+            this.convertAmount = this.baseAmount;
+        } else if (this.convertCurrency === this.baseCurrency) {
+            this.baseAmount = this.convertAmount;
+        } else if (reverse) {
+            this.baseAmount = this.formatDecimal(this.convertAmount / this.fromRates[this.convertCurrency]);
         } else {
-            this.convertAmount = this.baseAmount * this.fromRates[this.convertCurrency];
+            this.convertAmount = this.formatDecimal(this.baseAmount * this.fromRates[this.convertCurrency]);
         }
     }
 
@@ -79,4 +84,7 @@ export class ConvertAppComponent implements OnInit {
         this.disclaimerFlag = !this.disclaimerFlag;
     }
 
+    formatDecimal(num: number): string {
+        return (Number(num) * 100 / 100).toFixed(2);
+    }
 }
