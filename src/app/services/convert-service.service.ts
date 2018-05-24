@@ -12,8 +12,7 @@ export class ConvertServiceService {
 
   // function to get the api response and convert to json
   private getResponseData(res: Response) {
-    let body = res.json();
-    return body;
+    return res.json();
   }
 
   //function to handle the error from api call
