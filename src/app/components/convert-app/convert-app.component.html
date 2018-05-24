@@ -20,7 +20,7 @@
   </span>
   <div class="row">
     <div class="col-6">
-      <input class="text-box" id="convertAmount" appDecimal="true" placeholder="0.00" type="number" [(ngModel)]="convertAmount" (ngModelChange)="getCurrencyRate(true)">
+      <input class="text-box" id="convertAmount" appDecimal="true" placeholder="0.00" type="number" [(ngModel)]="convertAmount" (ngModelChange)="getCurrencyRate(true)" disabled>
     </div>
     <div class="col-6">
       <select class="text-box" id="convertCurrency" [(ngModel)]="convertCurrency" (ngModelChange)="getCurrencyRate(true)">
