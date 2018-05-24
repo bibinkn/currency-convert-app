@@ -29,18 +29,19 @@ export class ConvertAppComponent implements OnInit {
             if (response.rates) {
                 if (initial) {
                     const items: Array<any> = this.parseData(response.rates);
+                    console.log("items=>", items);
                     items.push({ id: 'EUR', value: 1 });
                     let newCurrList = [
                         {
                             id: "CAD",
-                            value: items[3].value
+                            value: this.getValue("CAD",items)
                         },
                         {
                             id: "USD",
-                            value: items[30].value
+                            value: this.getValue("USD",items)
                         }, {
                             id: "EUR",
-                            value: items[32].value
+                            value: this.getValue("EUR",items)
                         }
                     ]
                     this.rates = newCurrList;
@@ -53,6 +54,16 @@ export class ConvertAppComponent implements OnInit {
             }
         });
     }
+
+    //function to get the value of selected id from newCurrList
+    getValue(key, array) {
+        for (var el in array) {
+            if (array[el].hasOwnProperty(key)) {
+                return array[el][key];
+            }
+        }
+    }
+
 
     public getCurrencyRate(reverse) {
         if (this.baseCurrency === this.convertCurrency) {
